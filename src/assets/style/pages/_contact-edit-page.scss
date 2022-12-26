@@ -1,0 +1,28 @@
+.contact-edit {
+    img {
+        max-height: 180px;
+    }
+
+    form {
+        gap:15px;
+        width:300px;
+        margin:20px auto 40px;
+        label{
+            display: flex;
+            justify-content: space-between;
+        }
+        // align-items: flex-end;
+
+        input{
+            flex-basis:78%;
+        }
+        button{
+            width:100px;
+            margin:0 0 0 auto;
+        }
+    
+    }
+    .delBtn:hover{
+        background-color: rgba(255, 0, 0, 0.263);
+    }
+}

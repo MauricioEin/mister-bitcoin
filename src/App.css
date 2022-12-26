@@ -1,0 +1,190 @@
+/* General */
+html {
+  background-color: rgba(171, 252, 255, 0.329);
+}
+
+.App {
+  text-align: center;
+  padding: 20px 10px 0px;
+}
+
+.top-container {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid rgb(5, 29, 5);
+  background-color: transparent;
+
+  margin: 2px;
+  padding: 5px 10px;
+  transition: .2s;
+}
+
+button:hover {
+  border: 1px solid rgb(169, 42, 144);
+  color: rgb(169, 42, 144);
+  background-color: rgba(255, 255, 255, 0.096);
+}
+
+
+/* show-time: */
+
+
+.show-time {
+  /* background-color: rgb(138, 216, 216); */
+  background: linear-gradient(rgb(99, 162, 194), rgb(138, 216, 216));
+  border-radius: 7px;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  transition: .4s;
+
+}
+
+.show-time img {
+  width: 130px;
+}
+
+
+.dark {
+  background-color: rgb(11, 14, 26);
+  color: aliceblue;
+}
+
+
+/* count-down */
+
+
+.count-down {
+  background-color: rgb(244, 230, 152);
+  background: linear-gradient(rgb(244, 217, 60), rgb(244, 232, 165));
+  border-radius: 7px;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.count-down .low {
+  color: rgb(215, 63, 63);
+}
+
+/* who's watching */
+
+
+
+.whos-watching {
+  background-color: rgb(152, 159, 236);
+  background: linear-gradient(rgb(126, 135, 238), rgb(152, 159, 236));
+  border-radius: 7px;
+  padding: 5px 20px;
+  margin: 0 20px 5px;
+}
+
+.whos-watching h2 {
+  margin: 0 0 3px;
+}
+
+.user-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  /* row-gap: 20px; */
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.user-list li {
+  margin-bottom: 10px;
+}
+
+.user-preview {
+  cursor: pointer;
+  width: fit-content;
+  margin: 15px auto 0;
+}
+
+.user-preview img {
+  width: 100px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.253);
+}
+
+
+.back-screen {
+  background-color: rgba(4, 6, 27, 0.55);
+  position: fixed;
+  inset: 0;
+}
+
+.rename-modal {
+  position: relative;
+  top: 40vh;
+  background: linear-gradient(rgb(129, 202, 129), rgb(197, 238, 197));
+  border-radius: 3px;
+  padding: 20px 20px 10px;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.414);
+}
+
+.rename-modal * {
+  display: block;
+  margin: 0 auto 10px;
+  /* width: 100%; */
+}
+
+.rename-modal button {
+  width: 100%;
+}
+
+.shows-container {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  gap: 70px;
+}
+
+.show-list {
+  flex-grow: 1;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 40px;
+  padding: 0;
+  align-items: center;
+}
+
+.show-list li {
+  min-width: 100px;
+  padding: 5px 10px;
+  background: linear-gradient(rgba(245, 135, 255, 0.644), rgba(234, 172, 255, 0.66));
+  /* border:0; */
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.379); */
+  cursor: default;
+}
+
+/* wiring ups */
+
+.wiring-ups {
+  background-color: rgb(95, 160, 136);
+  background: linear-gradient(rgb(85, 163, 134), rgb(139, 224, 193));
+  padding: 10px;
+  border-radius: 8px;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+
+}

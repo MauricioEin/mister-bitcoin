@@ -1,0 +1,15 @@
+.app-header{
+    background: linear-gradient( rgb(255, 191, 0), rgb(255, 216, 75));
+    padding: 15px;
+
+    button{
+        margin-inline-end: 2vw;
+        margin-inline-start: 2vw;
+        color:black;
+        border-color: black;
+
+    }
+    a.active button{
+        font-weight: bold;
+    }
+}

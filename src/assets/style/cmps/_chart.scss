@@ -1,0 +1,23 @@
+.chart {
+    margin-bottom: 30px;
+    h4{
+        margin-bottom:10px;
+    }
+    p {
+        margin: 0;
+    }
+
+    .recharts-wrapper {
+        width: 80vw !important;
+        margin: auto;
+
+        .recharts-surface {
+            width: 100% !important;
+        }
+
+        .recharts-tooltip-label {
+            color: rgb(28, 28, 53);
+            outline: none;
+        }
+    }
+}
