@@ -8,12 +8,11 @@ export function ContactPreview({ contact }) {
 
         <li className="contact-preview">
             <Link to={`/contact/${contact._id}`}>
-                <img src={imgUrl} alt="" />
                 <section className="info">
                     <h2>{contact.name}</h2>
-                    <h4>{contact.email}</h4>
-                    <h4>{contact.phone}</h4>
+                    <h5>{contact.phone}</h5>
                 </section>
+                <img src={imgUrl} alt="" />
                 {/* <section className="actions">
                 <button onClick={() => onRemoveContact(contact._id)}>X</button>
             </section> */}
