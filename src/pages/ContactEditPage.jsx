@@ -1,14 +1,16 @@
 import { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { contactService } from '../services/contact.service'
+import { connect } from 'react-redux'
+import { removeContact, saveContact } from '../store/actions/contact.actions'
 
-export class ContactEditPage extends Component {
+
+class _ContactEditPage extends Component {
     state = {
         contact: contactService.getEmptyContact()
     }
 
     async componentDidMount() {
-        console.log('props', this.props)
         const contactId = this.props.match.params.id
         if (!contactId) return
         const contact = await contactService.getContactById(contactId)
@@ -18,8 +20,8 @@ export class ContactEditPage extends Component {
     submitContact = async (ev) => {
         ev.preventDefault()
         try {
-            await contactService.saveContact({ ...this.state.contact })
-            this.props.history.push('/')
+            const savedContact = await this.props.saveContact({ ...this.state.contact })
+            this.props.history.push('/contact/' + savedContact._id)
         } catch (err) {
             console.log('err:', err)
         }
@@ -27,14 +29,14 @@ export class ContactEditPage extends Component {
 
     handleChange = ({ target }) => {
         const { name: field, value } = target
-        this.setState(({contact}) => ({ contact: { ...contact, [field]: value } }))
+        this.setState(({ contact }) => ({ contact: { ...contact, [field]: value } }))
     }
 
     deleteContact = async () => {
-        try{
-            await contactService.deleteContact(this.state.contact._id)
+        try {
+            await this.props.removeContact(this.state.contact._id)
             this.props.history.push('/contact')
-        } catch(err) {
+        } catch (err) {
             console.log('error deleting contact:', err)
         }
     }
@@ -47,16 +49,16 @@ export class ContactEditPage extends Component {
         return (
             <div className="contact-edit">
                 <h2>{contact._id ? 'Edit Contact' : 'Add Contact'}</h2>
-                {contact._id && <img src={imgUrl}/>}
+                {contact._id && <img src={imgUrl} />}
                 <form onSubmit={this.submitContact} className='flex column'>
-                    <label htmlFor='name'>Name 
-                    <input onChange={this.handleChange} value={contact.name} type='text' name='name' id='name' />
+                    <label>Name
+                        <input onChange={this.handleChange} value={contact.name} type='text' name='name' />
                     </label>
-                    <label htmlFor='email'>Email
-                    <input onChange={this.handleChange} value={contact.email} type='email' name='email' id='email' />
+                    <label >Email
+                        <input onChange={this.handleChange} value={contact.email} type='email' name='email' />
                     </label>
-                    <label htmlFor='phone'>Phone
-                    <input onChange={this.handleChange} value={contact.phone} type='text' name='phone' id='phone' />
+                    <label >Phone
+                        <input onChange={this.handleChange} value={contact.phone} type='text' name='phone' />
                     </label>
                     <button>Save</button>
                 </form>
@@ -68,3 +70,16 @@ export class ContactEditPage extends Component {
         )
     }
 }
+
+
+
+
+const mapStateToProps = state => {
+    return {
+    }
+}
+const mapDispatchToProps = {
+    removeContact,
+    saveContact
+}
+export const ContactEditPage = connect(mapStateToProps, mapDispatchToProps)(_ContactEditPage)

@@ -1,44 +1,48 @@
 import { Component } from 'react'
 import { ContactList } from '../cmps/ContactList'
 import { ContactFilter } from '../cmps/ContactFilter'
-import { contactService } from '../services/contact.service'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { loadContacts, setFilterBy } from '../store/actions/contact.actions'
 
-export class ContactPage extends Component {
-
-    state = {
-        contacts: null,
-        filterBy: {
-            term: '',
-        }
-    }
+class _ContactPage extends Component {
 
     async componentDidMount() {
-        this.loadContacts()
-    }
-
-    loadContacts = async () => {
-        try {
-            const contacts = await contactService.getContacts(this.state.filterBy)
-            this.setState({ contacts })
-        } catch (err) {
-            console.log('err:', err)
-        }
+        await this.props.loadContacts()
     }
 
     onChangeFilter = (filterBy) => {
-        this.setState({ filterBy }, this.loadContacts)
+        this.props.setFilterBy(filterBy)
+        this.props.loadContacts()
     }
 
     render() {
-        const { contacts, filterBy } = this.state
-
+        const { contacts, filterBy } = this.props
+        console.log('contacts', contacts)
         return (
             <div className="contact-page">
                 <h1>CONTACTS</h1>
                 <ContactFilter onChangeFilter={this.onChangeFilter} filterBy={filterBy} />
-
-                <ContactList contacts={contacts} />
+                <Link to='/contact/edit'><button>Add a new contact</button></Link>
+                {contacts ?
+                    <ContactList contacts={contacts} />
+                    : <div>Loading...</div>}
             </div >
         )
     }
 }
+
+
+
+
+const mapStateToProps = state => {
+    return {
+        contacts: state.contactModule.contacts,
+        filterBy: state.contactModule.filterBy
+    }
+}
+const mapDispatchToProps = {
+    loadContacts,
+    setFilterBy
+}
+export const ContactPage = connect(mapStateToProps, mapDispatchToProps)(_ContactPage)
