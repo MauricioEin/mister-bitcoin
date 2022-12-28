@@ -19,17 +19,17 @@ export class TransferFund extends Component {
 
     onTransfer = (ev) => {
         ev.preventDefault()
-        console.log('transfer:', this.state.amount)
+        if (!this.state.amount) return
         this.props.onTransferCoins(this.props.contact, this.state.amount)
         this.setState({ amount: 0 })
     }
 
     render() {
-        const { contact, maxCoins, onTransferCoins } = this.props
+        const { contact, maxCoins } = this.props
         return (
             <section className='transfer-fund'>
                 <p>Transfer coins to {contact.name}:</p>
-                <form className='flex justify-center' onSubmit={this.onTransfer}>
+                <form className='flex justify-center wrap' onSubmit={this.onTransfer}>
                     <label htmlFor='amount'>Amount: </label>
                     <input ref={this.handleRef} type="number" max={maxCoins} min="0"
                         value={this.state.amount} onChange={this.handleChange}

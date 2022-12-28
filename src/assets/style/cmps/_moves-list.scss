@@ -2,18 +2,21 @@
     background-color: rgb(23, 65, 100);
     background: linear-gradient(rgb(59, 62, 81), rgb(48, 48, 62));
     color: rgb(37, 37, 37);
-    width: 600px;
-    padding: 10px 15px 10px;
+    width: 500px;
+    padding: 10px 5px 10px 15px;
     border-radius: 4px;
-    margin: 20px auto;
-    max-width: 80vw;
+    margin: auto;
+    max-width: 100%;
+
 
     .moves-container {
         gap: 10px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-        max-height:200px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        max-height: 200px;
         overflow-y: auto;
+        padding-inline-end: 10px;
+        margin: 5px 0;
 
         .move-preview {
             background-color: rgba(255, 255, 255, 0.246);
@@ -23,8 +26,9 @@
         }
     }
 
-    h4 , p.empty{
-        margin: 0 0 10px;
+    h4,
+    p.empty {
+        margin: 0 0 5px;
         color: rgb(225, 225, 225);
 
     }
@@ -32,4 +36,7 @@
     p {
         margin: 0;
     }
+button{
+    margin-top: 5px;
+}
 }

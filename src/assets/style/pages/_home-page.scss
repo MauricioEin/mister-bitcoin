@@ -1,8 +1,25 @@
-.home-page{
-    img{
-        width:50%;
-        max-width:490px;
+.home-page {
+    padding-top: 10px;
+
+    img {
+        width: 50%;
+        max-width: 490px;
         min-width: 230px;
-        // max-height: 45vh;
+        margin: 5px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        margin: 0 0 10px;
+    }
+
+    .moves-list {
+        margin-top: 20px;
+
+        .moves-container {
+            grid-template-columns: 1fr;
+        }
     }
 }

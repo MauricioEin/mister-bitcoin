@@ -47,26 +47,27 @@ class _ContactDetailsPage extends Component {
 
         return (
             <div className="contact-details">
-                <nav className='flex space-around'>
+                <nav className='flex space-between'>
                     <Link to={`/contact/${prevId}`}> Previous</Link>
                     <Link to={`/contact/${nextId}`}> Next</Link>
                 </nav>
-                <img src={imgUrl} alt="" />
+                <div className='contact-info'>
+                    <img src={imgUrl} alt="" />
 
-                <h1>{contact.name}</h1>
-                <h3>{contact.email}</h3>
-                <h3>{contact.phone}</h3>
-
+                    <h1>{contact.name}</h1>
+                    <h3>{contact.email}</h3>
+                    <h3>{contact.phone}</h3>
+                    <NavLink to={`/contact/edit/${contact._id}`}><button >Edit</button></NavLink>
+                </div>
                 <TransferFund
                     contact={contact}
                     onTransferCoins={sendCoins}
                     maxCoins={loggedInUser.coins} />
-
                 <MovesList title={'Your Moves:'} moves={movesToContact} />
 
-                <NavLink to="/contact"><button >Back</button></NavLink>
-                <NavLink to={`/contact/edit/${contact._id}`}><button >Edit</button></NavLink>
-
+                {/* <div className='btns flex space-between'>
+                    <NavLink to="/contact"><button >Back</button></NavLink>
+                </div> */}
             </div >
         )
     }

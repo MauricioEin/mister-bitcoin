@@ -39,7 +39,7 @@ async function addMove(contact, amount) {
             at: Date.now(),
             amount
         }
-        user.moves.push(move)
+        user.moves.unshift(move)
         user.coins -= amount
         storageService.save(LOGGED_STORAGE_KEY, user)
         return user

@@ -20,10 +20,9 @@ export class HomePage extends Component {
             <div className="home-page">
                 <h1>MisterBITcoin</h1>
                 <img src={require('../assets/img/bit.jpeg')}/>
-                <h2>{user.name}</h2>
+                <h2>Welcome {user.name}</h2>
                 <h3>Coins: {user.coins}</h3>
-                <p>One Dollar in Bitcoins: {rate}</p>
-                <p>One Bitcoin in Dollars: {(1/rate).toLocaleString()}</p>
+                <p>Dollar to Bitcoin: {rate} 🞄 Bitcoin to Dollar: {(1/rate).toLocaleString()}</p>
                 <MovesList title={'Your last 3 moves:'} moves={user.moves.slice(0,3)} addContactName={true}/>
             </div >
         )

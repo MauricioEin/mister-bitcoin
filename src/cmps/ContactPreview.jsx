@@ -13,9 +13,6 @@ export function ContactPreview({ contact }) {
                     <h5>{contact.phone}</h5>
                 </section>
                 <img src={imgUrl} alt="" />
-                {/* <section className="actions">
-                <button onClick={() => onRemoveContact(contact._id)}>X</button>
-            </section> */}
             </Link>
         </li>
 

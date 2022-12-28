@@ -12,4 +12,12 @@
     button{
         margin-bottom: 25px;
     }
+
+
+    .contact-list{
+        height:calc(100vh - 270px);
+        overflow-y: auto;
+        margin-inline-end: -10px;
+        padding-inline-end: 10px;
+    }
 }

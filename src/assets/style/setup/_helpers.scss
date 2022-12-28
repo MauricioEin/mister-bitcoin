@@ -53,4 +53,5 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     grid-gap: 30px;
+    grid-template-rows: repeat(auto-fill,100px);
 }

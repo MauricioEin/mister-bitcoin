@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     // font-family: arial;
 }
@@ -6,6 +6,9 @@
 body {
     background-color: rgb(23, 23, 31);
     color: rgb(255, 255, 222);
+}
+.App{
+    position: relative;
 }
 
 button {
@@ -31,4 +34,30 @@ button {
 input {
     padding: 5px 10px;
     // width:200px;
+}
+
+
+// SCROLLBAR
+/* width */
+::-webkit-scrollbar {
+    // position: fixed;
+    right: 0;
+    width: 10px;
+
+    /* Track */
+    &-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    &-thumb {
+        background: linear-gradient( rgb(72, 74, 131),rgb(96, 98, 164),rgb(72, 74, 131));
+    }
+
+    /* Handle on hover */
+    &-thumb:hover {
+        // background: rgba(136, 136, 136, 0.5);
+        // background: #555;
+    }
+
 }
