@@ -14,16 +14,20 @@
         font-weight: bold;
     }
 
-    @media (max-width:450px) {
+    @media (max-width:400px) {
         padding: 7px;
 
         nav {
-            max-width: 190px;
+            max-width: 260px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: space-between;
-        margin: auto;
+            margin: auto;
+            button{
+                padding:5px 20px;
+                background: linear-gradient(rgba(255, 255, 255, 0.086), rgba(255, 255, 255, 0.17));
+            }
         }
     }
 }

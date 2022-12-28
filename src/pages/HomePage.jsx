@@ -19,11 +19,13 @@ export class HomePage extends Component {
         return (
             <div className="home-page">
                 <h1>MisterBITcoin</h1>
-                <img src={require('../assets/img/bit.jpeg')}/>
+                <img src={require('../assets/img/bit.jpeg')} />
                 <h2>Welcome {user.name}</h2>
                 <h3>Coins: {user.coins}</h3>
-                <p><span>Dollar to Bitcoin: {rate}</span> 🞄 <span>Bitcoin to Dollar: {(1/rate).toLocaleString()}</span></p>
-                <MovesList title={'Your last 3 moves:'} moves={user.moves.slice(0,3)} addContactName={true}/>
+                <p><span>Dollar to Bitcoin: {rate}</span>
+                    <span className='circle'>•</span>
+                    <span>Bitcoin to Dollar: {(1 / rate).toLocaleString()}</span></p>
+                <MovesList title={'Your last 3 moves:'} moves={user.moves.slice(0, 3)} addContactName={true} />
             </div >
         )
     }
