@@ -1,89 +1,76 @@
-import { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useCallback, useEffect, useState } from 'react'
+import { NavLink, useParams } from 'react-router-dom'
 import { contactService } from '../services/contact.service'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { removeContact, saveContact } from '../store/actions/contact.actions'
 
 
-class _ContactEditPage extends Component {
-    state = {
-        contact: contactService.getEmptyContact()
-    }
+export function ContactEditPage({ history }) {
+    const [contact, setContact] = useState(contactService.getEmptyContact())
+    const params = useParams()
+    const dispatch = useDispatch()
 
-    async componentDidMount() {
-        const contactId = this.props.match.params.id
+    useEffect(() => {
+        loadContact()
+    }, [])
+
+    const loadContact = async () => {
+        const contactId = params.id
         if (!contactId) return
         const contact = await contactService.getContactById(contactId)
-        this.setState({ contact })
+        setContact(contact)
     }
 
-    submitContact = async (ev) => {
+    const submitContact = (ev) => {
         ev.preventDefault()
         try {
-            const savedContact = await this.props.saveContact({ ...this.state.contact })
-            this.props.history.push('/contact/' + savedContact._id)
+            dispatch(saveContact({ ...contact }))
+            history.push('/contact/' + (contact._id||''))
         } catch (err) {
             console.log('err:', err)
         }
     }
 
-    handleChange = ({ target }) => {
+    const handleChange = ({ target }) => {
         const { name: field, value } = target
-        this.setState(({ contact }) => ({ contact: { ...contact, [field]: value } }))
+        setContact(contact => ({ ...contact, [field]: value }))
     }
 
-    deleteContact = async () => {
+    const deleteContact = () => {
         try {
-            await this.props.removeContact(this.state.contact._id)
-            this.props.history.push('/contact')
+            dispatch(removeContact(contact._id))
+            history.push('/contact')
         } catch (err) {
             console.log('error deleting contact:', err)
         }
     }
 
-    handleRef = (el) =>{
+    const handleRef = useCallback((el) => {
         el?.focus()
-    }
+    }, [])
 
+    const imgUrl = `https://robohash.org/${contact._id}`
 
-    render() {
-        const { contact } = this.state
-        const imgUrl = `https://robohash.org/${contact._id}`
+    return (
+        <div className="contact-edit">
+            <h2>{contact._id ? 'Edit Contact' : 'Add Contact'}</h2>
+            {contact._id && <img src={imgUrl} />}
+            <form onSubmit={submitContact} className='flex column'>
+                <label ref={handleRef}>Name
+                    <input onChange={handleChange} value={contact.name} type='text' name='name' />
+                </label>
+                <label >Email
+                    <input onChange={handleChange} value={contact.email} type='email' name='email' />
+                </label>
+                <label >Phone
+                    <input onChange={handleChange} value={contact.phone} type='text' name='phone' />
+                </label>
+                <button>Save</button>
+            </form>
 
-        return (
-            <div className="contact-edit">
-                <h2>{contact._id ? 'Edit Contact' : 'Add Contact'}</h2>
-                {contact._id && <img src={imgUrl} />}
-                <form onSubmit={this.submitContact} className='flex column'>
-                    <label ref={this.handleRef}>Name
-                        <input onChange={this.handleChange} value={contact.name} type='text' name='name' />
-                    </label>
-                    <label >Email
-                        <input onChange={this.handleChange} value={contact.email} type='email' name='email' />
-                    </label>
-                    <label >Phone
-                        <input onChange={this.handleChange} value={contact.phone} type='text' name='phone' />
-                    </label>
-                    <button>Save</button>
-                </form>
+            <NavLink to={`/contact/${contact._id}`}><button>Back</button></NavLink>
+            <button onClick={deleteContact} className='delBtn'>Delete contact</button>
 
-                <NavLink to={`/contact/${contact._id}`}><button>Back</button></NavLink>
-                <button onClick={this.deleteContact} className='delBtn'>Delete contact</button>
-
-            </div >
-        )
-    }
+        </div >
+    )
 }
-
-
-
-
-const mapStateToProps = state => {
-    return {
-    }
-}
-const mapDispatchToProps = {
-    removeContact,
-    saveContact
-}
-export const ContactEditPage = connect(mapStateToProps, mapDispatchToProps)(_ContactEditPage)

@@ -7,34 +7,18 @@ import { ContactDetailsPage } from './pages/ContactDetailsPage'
 import { ContactEditPage } from './pages/ContactEditPage'
 import { SignupPage } from './pages/SignupPage'
 import { AppHeader } from './cmps/AppHeader'
-import { Component } from 'react'
-import { connect } from 'react-redux'
-import { loadLoggedUser } from './store/actions/user.actions'
+import { useSelector } from 'react-redux'
 
-// import { userService } from './services/user.service'
+function PrivateCmp(props) {
+  const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
-class _PrivateCmp extends Component {
-
-  render() {
-    const { loggedInUser } = this.props
-    return (
-      loggedInUser ? <Route {...this.props} />
-        : <Redirect to="/signup" />
-    )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    loggedInUser: state.userModule.loggedInUser,
-  }
-}
-const mapDispatchToProps = {
-  loadLoggedUser
+  return (
+    loggedInUser ? <Route {...props} />
+      : <Redirect to="/signup" />
+  )
 }
 
 
-const PrivateCmp = connect(mapStateToProps, mapDispatchToProps)(_PrivateCmp)
 
 export function App() {
 

@@ -1,38 +1,30 @@
-import { Component, createRef } from 'react'
-import { contactService } from '../services/contact.service'
+import { useState } from 'react'
 
-export class TransferFund extends Component {
+export function TransferFund({ contact, maxCoins, onTransferCoins }) {
+    const [amount, setAmount] = useState(0)
 
-    state = {
-        amount: 0
+    const handleChange = ({ target }) => {
+        setAmount(+target.value)
     }
 
-    typeInputRef = createRef()
-
-    handleChange = ({ target }) => {
-        this.setState({ amount: +target.value })
-    }
-
-    onTransfer = (ev) => {
+    const onTransfer = (ev) => {
         ev.preventDefault()
-        if (!this.state.amount) return
-        this.props.onTransferCoins(this.props.contact, this.state.amount)
-        this.setState({ amount: 0 })
+        if (!amount) return
+        onTransferCoins(contact, amount)
+        setAmount(0)
     }
 
-    render() {
-        const { contact, maxCoins } = this.props
-        return (
-            <section className='transfer-fund'>
-                <p>Transfer coins to {contact.name}:</p>
-                <form className='flex justify-center wrap' onSubmit={this.onTransfer}>
-                    <label htmlFor='amount'>Amount: </label>
-                    <input type="number" max={maxCoins} min="0"
-                        value={this.state.amount} onChange={this.handleChange}
-                        id="amount" name="amount" />
-                    <button>Transfer</button>
-                </form>
-            </section>
-        )
-    }
+    return (
+        <section className='transfer-fund'>
+            <p>Transfer coins to {contact.name}:</p>
+            <form className='flex justify-center wrap' onSubmit={onTransfer}>
+                <label htmlFor='amount'>Amount: </label>
+                <input type="number" max={maxCoins} min="0"
+                    value={amount} onChange={handleChange}
+                    id="amount" name="amount" />
+                <button>Transfer</button>
+            </form>
+        </section>
+    )
 }
+
