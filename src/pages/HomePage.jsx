@@ -22,7 +22,7 @@ export class HomePage extends Component {
                 <img src={require('../assets/img/bit.jpeg')}/>
                 <h2>Welcome {user.name}</h2>
                 <h3>Coins: {user.coins}</h3>
-                <p>Dollar to Bitcoin: {rate} 🞄 Bitcoin to Dollar: {(1/rate).toLocaleString()}</p>
+                <p><span>Dollar to Bitcoin: {rate}</span> 🞄 <span>Bitcoin to Dollar: {(1/rate).toLocaleString()}</span></p>
                 <MovesList title={'Your last 3 moves:'} moves={user.moves.slice(0,3)} addContactName={true}/>
             </div >
         )

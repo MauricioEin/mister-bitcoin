@@ -63,11 +63,8 @@ class _ContactDetailsPage extends Component {
                     contact={contact}
                     onTransferCoins={sendCoins}
                     maxCoins={loggedInUser.coins} />
-                <MovesList title={'Your Moves:'} moves={movesToContact} />
+                <MovesList title={`Your Moves to ${contact.name.split(' ')[0]}:`} moves={movesToContact} />
 
-                {/* <div className='btns flex space-between'>
-                    <NavLink to="/contact"><button >Back</button></NavLink>
-                </div> */}
             </div >
         )
     }

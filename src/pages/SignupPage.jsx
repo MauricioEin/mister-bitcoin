@@ -21,6 +21,7 @@ class _SignupPage extends Component {
     }
 
     onSignup = () => {
+        if(!this.state.name) return
         this.props.signup(this.state.name)
         this.props.history.push('/')
     }
@@ -32,8 +33,8 @@ class _SignupPage extends Component {
                 <h3>Please enter your name:</h3>
                 <label htmlFor='name'>
                     <input ref={this.handleRef} value={this.state.name} onChange={this.handleChange} type="text" id="name" />
+                    <button onClick={this.onSignup}>Sign up</button>
                 </label>
-                <button onClick={this.onSignup}>Sign up</button>
             </div >
         )
     }

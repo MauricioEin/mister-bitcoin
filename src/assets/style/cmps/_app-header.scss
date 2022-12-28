@@ -1,15 +1,29 @@
-.app-header{
-    background: linear-gradient( rgb(255, 191, 0), rgb(255, 216, 75));
+.app-header {
+    background: linear-gradient(rgb(255, 191, 0), rgb(255, 216, 75));
     padding: 15px;
 
-    button{
+    button {
         margin-inline-end: 2vw;
         margin-inline-start: 2vw;
-        color:black;
+        color: black;
         border-color: black;
 
     }
-    a.active button{
+
+    a.active button {
         font-weight: bold;
+    }
+
+    @media (max-width:450px) {
+        padding: 7px;
+
+        nav {
+            max-width: 190px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        margin: auto;
+        }
     }
 }

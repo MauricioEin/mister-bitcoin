@@ -7,10 +7,12 @@ export function AppHeader() {
     return (
 
         <header className='app-header'>
-            <NavLink exact to="/"><button>Home</button></NavLink>
-            <NavLink to="/contact"><button>Contacts</button></NavLink>
-            <NavLink to="/statistic"><button>Statistics</button></NavLink>
-            <button onClick={onLogout} >Log out</button>
+            <nav>
+                <NavLink exact to="/"><button>Home</button></NavLink>
+                <NavLink to="/contact"><button>Contacts</button></NavLink>
+                <NavLink to="/statistic"><button>Statistics</button></NavLink>
+                <button onClick={onLogout} >Log out</button>
+            </nav>
         </header>
     )
 }

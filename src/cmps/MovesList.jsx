@@ -13,8 +13,9 @@ export class MovesList extends Component {
         const { title, moves, addContactName } = this.props
         const { isShow } = this.state
         const btnTxt = isShow ? 'Hide moves' : 'Show moves'
+        const showClass = isShow && moves.length>1 ? 'show' : ''
         return (
-            <section className='moves-list'>
+            <section className={'moves-list ' + showClass}>
                 <h4>{title}</h4>
                 <div className='moves-container'>
                     {moves.length ?
