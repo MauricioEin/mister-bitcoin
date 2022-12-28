@@ -9,10 +9,6 @@ export class TransferFund extends Component {
 
     typeInputRef = createRef()
 
-    handleRef = (elInput) => {
-        elInput?.focus()
-    }
-
     handleChange = ({ target }) => {
         this.setState({ amount: +target.value })
     }
@@ -31,7 +27,7 @@ export class TransferFund extends Component {
                 <p>Transfer coins to {contact.name}:</p>
                 <form className='flex justify-center wrap' onSubmit={this.onTransfer}>
                     <label htmlFor='amount'>Amount: </label>
-                    <input ref={this.handleRef} type="number" max={maxCoins} min="0"
+                    <input type="number" max={maxCoins} min="0"
                         value={this.state.amount} onChange={this.handleChange}
                         id="amount" name="amount" />
                     <button>Transfer</button>

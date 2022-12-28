@@ -41,6 +41,10 @@ class _ContactEditPage extends Component {
         }
     }
 
+    handleRef = (el) =>{
+        el?.focus()
+    }
+
 
     render() {
         const { contact } = this.state
@@ -51,7 +55,7 @@ class _ContactEditPage extends Component {
                 <h2>{contact._id ? 'Edit Contact' : 'Add Contact'}</h2>
                 {contact._id && <img src={imgUrl} />}
                 <form onSubmit={this.submitContact} className='flex column'>
-                    <label>Name
+                    <label ref={this.handleRef}>Name
                         <input onChange={this.handleChange} value={contact.name} type='text' name='name' />
                     </label>
                     <label >Email
@@ -63,7 +67,7 @@ class _ContactEditPage extends Component {
                     <button>Save</button>
                 </form>
 
-                <NavLink to="/contact"><button>Back</button></NavLink>
+                <NavLink to={`/contact/${contact._id}`}><button>Back</button></NavLink>
                 <button onClick={this.deleteContact} className='delBtn'>Delete contact</button>
 
             </div >

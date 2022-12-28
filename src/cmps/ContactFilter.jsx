@@ -1,4 +1,4 @@
-import { Component, createRef } from 'react'
+import { Component } from 'react'
 
 export class ContactFilter extends Component {
 
@@ -9,10 +9,6 @@ export class ContactFilter extends Component {
     componentDidMount() {
         const { filterBy } = this.props
         this.setState({ filterBy: { ...filterBy } })
-    }
-
-    handleRef = (el) => {
-        el?.focus()
     }
 
     handleChange = ({ target }) => {
@@ -36,7 +32,7 @@ export class ContactFilter extends Component {
             <form className='contact-filter'>
                 <section>
                     <label htmlFor="term"></label>
-                    <input ref={this.handleRef} onChange={this.handleChange}
+                    <input onChange={this.handleChange}
                      value={term} type="text" name="term" id="term" placeholder='Search for a contact' />
                 </section>
             </form>
