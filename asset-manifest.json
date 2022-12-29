@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/mister-bitcoin/static/css/main.5fd4031f.css",
-    "main.js": "/mister-bitcoin/static/js/main.401d7dcb.js",
+    "main.js": "/mister-bitcoin/static/js/main.c5d9dd8b.js",
     "static/js/787.10cefd62.chunk.js": "/mister-bitcoin/static/js/787.10cefd62.chunk.js",
     "static/media/bit.jpeg": "/mister-bitcoin/static/media/bit.ce88a1c9c0b078505ffb.jpeg",
     "static/media/bitcoin.png": "/mister-bitcoin/static/media/bitcoin.aedee76e524b1d13cfff.png",
     "index.html": "/mister-bitcoin/index.html",
     "main.5fd4031f.css.map": "/mister-bitcoin/static/css/main.5fd4031f.css.map",
-    "main.401d7dcb.js.map": "/mister-bitcoin/static/js/main.401d7dcb.js.map",
+    "main.c5d9dd8b.js.map": "/mister-bitcoin/static/js/main.c5d9dd8b.js.map",
     "787.10cefd62.chunk.js.map": "/mister-bitcoin/static/js/787.10cefd62.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5fd4031f.css",
-    "static/js/main.401d7dcb.js"
+    "static/js/main.c5d9dd8b.js"
   ]
 }
