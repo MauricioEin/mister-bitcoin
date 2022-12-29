@@ -5,7 +5,7 @@ export function MovesList(props) {
     const [isShow, setIsShow] = useState(false)
 
     const toggleShow = () => {
-        setIsShow(prevIsShow => ({ isShow: !prevIsShow }))
+        setIsShow(prevIsShow => !prevIsShow)
     }
     const { title, moves, addContactName } = props
     const btnTxt = isShow ? 'Hide moves' : 'Show moves'

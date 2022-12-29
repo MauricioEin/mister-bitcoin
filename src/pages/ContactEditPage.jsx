@@ -24,8 +24,10 @@ export function ContactEditPage({ history }) {
     const submitContact = (ev) => {
         ev.preventDefault()
         try {
-            dispatch(saveContact({ ...contact }))
-            history.push('/contact/' + (contact._id||''))
+            const savedContact = dispatch(saveContact({ ...contact }))
+            savedContact.then(contact => {
+                history.push('/contact/' + (contact._id))
+            })
         } catch (err) {
             console.log('err:', err)
         }

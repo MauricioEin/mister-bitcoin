@@ -12,11 +12,10 @@ export function ContactPage() {
 
     useEffect(() => {
         dispatch(loadContacts())
-    }, [])
+    }, [filterBy])
 
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
-        dispatch(loadContacts())
     }
 
     console.log('contacts', contacts)
